@@ -49,6 +49,8 @@ public class MainActivity extends Activity {
             String contents = data.getStringExtra("SCAN_RESULT");
             String format = data.getStringExtra("SCAN_RESULT_FORMAT");
             System.out.println("contents: " + contents);
+            ComicBook book = new ComicBook();
+            book.getInfoFromBarcode(contents);
         } else if (resultCode == RESULT_CANCELED) {
         	System.out.println("cancel");
         }
