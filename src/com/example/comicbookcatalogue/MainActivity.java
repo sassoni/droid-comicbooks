@@ -15,12 +15,22 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		Button scanBtn = (Button) findViewById(R.id.button1);
-		scanBtn.setOnClickListener( new Button.OnClickListener() {
+		scanBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 		    public void onClick(View v) {
 		        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
 		        intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE", "QR_CODE_MODE");
 		        startActivityForResult(intent, 0);
+		    }
+		});
+		
+		Button addNewBtn = (Button) findViewById(R.id.button2);
+		addNewBtn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+		    public void onClick(View v) {
+				Intent myIntent = new Intent(MainActivity.this, EditDetailsActivity.class);
+				//myIntent.putExtra("key", value); //Optional parameters
+				startActivity(myIntent);
 		    }
 		});
 

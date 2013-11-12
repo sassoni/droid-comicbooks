@@ -23,4 +23,12 @@
         android:layout_marginTop="71dp"
         android:text="Button" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/button1"
+        android:layout_below="@+id/textView1"
+        android:text="Add" />
+
 </RelativeLayout>

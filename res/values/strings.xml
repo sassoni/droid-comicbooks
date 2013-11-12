@@ -4,5 +4,10 @@
     <string name="app_name">ComicBookCatalogue</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="cb_title">Title</string>
+    <string name="cb_issue">Issue</string>
+    <string name="cb_series">Series</string>
+    <string name="cb_publisher">Publisher</string>
+    <string name="title_activity_edit_details">EditDetailsActivity</string>
 
 </resources>
