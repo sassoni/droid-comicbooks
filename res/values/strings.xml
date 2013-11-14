@@ -9,5 +9,8 @@
     <string name="cb_series">Series</string>
     <string name="cb_publisher">Publisher</string>
     <string name="title_activity_edit_details">EditDetailsActivity</string>
-
+        
+    <string name="main_activity_menu_add_new">Add new</string>
+    <string name="main_activity_menu_settings">Settings</string>
+    
 </resources>
