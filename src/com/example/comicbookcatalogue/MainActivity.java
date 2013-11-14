@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 		case R.id.menu_add_new:
-			Intent myIntent = new Intent(MainActivity.this, EditDetailsActivity.class);
+			Intent myIntent = new Intent(MainActivity.this, AddNewComicBookActivity.class);
 			//myIntent.putExtra("key", value); //Optional parameters
 			startActivity(myIntent);
 			return true;
