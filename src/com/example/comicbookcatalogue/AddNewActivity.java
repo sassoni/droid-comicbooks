@@ -11,7 +11,9 @@ import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -61,8 +63,7 @@ public class AddNewActivity extends Activity{
 				String contents = data.getStringExtra("SCAN_RESULT");
 				String format = data.getStringExtra("SCAN_RESULT_FORMAT");
 				System.out.println("contents: " + contents);
-				//				ComicBook book = new ComicBook();
-				//				book.getInfoFromBarcode(contents);
+
 				ComicBookInfoRequest comicBookInfoRequest = new ComicBookInfoRequest();
 				comicBookInfoRequest.execute(contents);
 
@@ -78,6 +79,7 @@ public class AddNewActivity extends Activity{
 
 		@Override
 		protected void onPreExecute() {
+			
 			dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			dialog.setCancelable(false);
 			dialog.setMessage("Searching barcode");
@@ -86,52 +88,38 @@ public class AddNewActivity extends Activity{
 		
 		@Override
 		protected ComicBook doInBackground(String... params) {
-
-			ComicBook book = new ComicBook();
-			// ---------- This will go in a different class ---------/
-			// Jsoup scraping
-			Log.i(TAG, "Barcode to check: " + params[0]);
-			Document doc;
-			String url = "http://www.comics.org/barcode/" + params[0] + "/";
-
-			try {
-
-				// need http protocol
-				doc = Jsoup.connect(url).get();
-
-				// get page title
-				String title = doc.title();
-				System.out.println("title : " + title);
-
-				Elements myElems = doc.getElementsByClass("listing_even");
-
-				//				String textss = null;
-
-				if (myElems.size() > 0) {
-					Elements e = myElems.get(0).select("a[href*=series]");
-					System.out.println("text : " + e.get(0).text());
-					book.setTitle(e.get(0).text());
-				}
-				else {
-					Log.i(TAG, "BARCODE NOT FOUND");
-				}
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			// ---------- This will go in a different class ---------/
 			
-			return book;
+			String barcode = params[0];
+			InfoScraper infoScraper = new InfoScraper();
+			
+			return infoScraper.findBookByBarcode(barcode);
 		}
 
 		@Override
 		protected void onPostExecute(ComicBook book) {
+			
 			if (dialog.isShowing()) {
 				dialog.dismiss();
 			}
 
-			EditText titleText = (EditText) findViewById(R.id.title_et);
-			titleText.setText(book.getTitle());
+			if (book != null) {
+				EditText titleText = (EditText) findViewById(R.id.title_et);
+				titleText.setText(book.getTitle());
+			}
+			else {
+				AlertDialog.Builder builder = new AlertDialog.Builder(AddNewActivity.this);
+				builder.setMessage("Sorry, could not find barcode :(");
+				builder.setCancelable(true);
+				builder.setNeutralButton("OK",
+						new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+					}
+				});
+				AlertDialog alert1 = builder.create();
+				alert1.show();
+			}
+
 		}
 
 		@Override
