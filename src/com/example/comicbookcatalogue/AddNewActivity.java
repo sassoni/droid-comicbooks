@@ -78,21 +78,21 @@ public class AddNewActivity extends Activity{
 
 		@Override
 		protected void onPreExecute() {
-			this.dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-			this.dialog.setCancelable(false);
-			this.dialog.setMessage("Searching barcode");
-			this.dialog.show();
+			dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			dialog.setCancelable(false);
+			dialog.setMessage("Searching barcode");
+			dialog.show();
 		}
 		
 		@Override
 		protected ComicBook doInBackground(String... params) {
 
+			ComicBook book = new ComicBook();
+			// ---------- This will go in a different class ---------/
 			// Jsoup scraping
 			Log.i(TAG, "Barcode to check: " + params[0]);
 			Document doc;
 			String url = "http://www.comics.org/barcode/" + params[0] + "/";
-
-			ComicBook book = new ComicBook();
 
 			try {
 
@@ -119,6 +119,8 @@ public class AddNewActivity extends Activity{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			// ---------- This will go in a different class ---------/
+			
 			return book;
 		}
 
@@ -133,33 +135,9 @@ public class AddNewActivity extends Activity{
 		}
 
 		@Override
-		protected void onProgressUpdate(Void... values) { //show spinner? 
+		protected void onProgressUpdate(Void... values) {
 		}
 	}
 
 
 }
-
-
-//for (Element link : myElems) {
-
-//				System.out.println("text : " + link.text());
-
-// get the value from href attribute
-//System.out.println("\nlink : " + link.get.attr("href"));
-//System.out.println("text : " + link.text());
-
-//			}
-
-
-//			// get all links
-//			Elements links = doc.select("a[href]");
-//			System.out.println("HI!!!!");
-//			System.out.println("Size " + links.size());
-//			for (Element link : links) {
-//	 
-//				// get the value from href attribute
-//				System.out.println("\nlink : " + link.attr("href"));
-//				System.out.println("text : " + link.text());
-//	 
-//			}
