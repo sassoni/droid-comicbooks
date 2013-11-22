@@ -5,7 +5,7 @@
     <item
         android:id="@+id/menu_add_new"
         android:icon="@drawable/ic_menu_add_new"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/main_activity_menu_add_new"/>
     <!-- Settings, should always be in the overflow -->
     <item

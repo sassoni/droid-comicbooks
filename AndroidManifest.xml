@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.comicbookcatalogue.AddNewComicBookActivity"
+            android:name="com.example.comicbookcatalogue.AddNewActivity"
             android:label="@string/add_new_comicbook_activity_title"
             android:parentActivityName="com.example.comicbookcatalogue.MainActivity" >
         </activity>

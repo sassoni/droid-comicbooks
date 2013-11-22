@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- SScanner, should appear as action button -->
+    <item
+        android:id="@+id/menu_scan_barcode"
+        android:icon="@drawable/barcode"
+        android:showAsAction="always"
+        android:title="@string/add_new_activity_menu_scan_barcode"/>
+
+</menu>
