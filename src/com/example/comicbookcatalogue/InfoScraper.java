@@ -15,6 +15,7 @@ public class InfoScraper {
 	ComicBook book;
 
 	public InfoScraper() {
+		
 		book = new ComicBook();
 	}
 

@@ -26,7 +26,7 @@
         </activity>
         <activity
             android:name="com.example.comicbookcatalogue.AddNewActivity"
-            android:label="@string/add_new_comicbook_activity_title"
+            android:label="@string/add_new_activity_title"
             android:parentActivityName="com.example.comicbookcatalogue.MainActivity" >
         </activity>
     </application>
